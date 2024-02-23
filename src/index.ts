@@ -1,7 +1,10 @@
-export async function init() {
-  miro.board.ui.on('icon:click', async () => {
-    await miro.board.ui.openPanel({url: 'app.html'});
+import { ItemsCreateEvent } from '@mirohq/websdk-types';
+import { handleLinkItemsCreate } from './utils/miro';
+
+const init = async (): Promise<void> => {
+  window.miro.board.ui.on('items:create', (event: ItemsCreateEvent) => {
+    handleLinkItemsCreate(event);
   });
-}
+};
 
 init();

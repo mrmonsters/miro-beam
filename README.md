@@ -1,4 +1,4 @@
-## Miro Link
+## Miro Beam
 
 **&nbsp;ℹ&nbsp;Note**:
 
