@@ -1,7 +1,10 @@
-import { Embed, Item, ItemsCreateEvent } from '@mirohq/websdk-types';
-import { DOMAINS } from './constants';
+import { Embed, ItemsCreateEvent, Preview } from '@mirohq/websdk-types';
+import { REGEX_DOMAINS } from './constants';
 
-const isInstagramLink = (url: string): boolean => url.indexOf(DOMAINS.INSTAGRAM) >= 0;
+const isInstagramLink = (url: string): boolean => REGEX_DOMAINS.INSTAGRAM.test(url);
+
+// eslint-disable-next-line
+const isRedditLink = (url: string): boolean => REGEX_DOMAINS.REDDIT.test(url);
 
 const insertInstagramEmbed = async (url: string): Promise<Embed> => {
   const sanitisedUrl = url.split('?')[0].replace(/\/$/, '');
@@ -11,28 +14,19 @@ const insertInstagramEmbed = async (url: string): Promise<Embed> => {
   });
 };
 
-const handleInstagramLinkItemsCreate = async (items: Item[]): Promise<void> => {
-  const instagramLinkEvents = items.filter((e) => e.type === 'text' && isInstagramLink(e.content));
-
-  if (instagramLinkEvents.length <= 0) {
-    return;
-  }
-
-  instagramLinkEvents.forEach(async (link) => {
-    if (link.type !== 'text') {
-      return;
-    }
-
-    try {
-      const embed = await insertInstagramEmbed(link.content);
-
-      await miro.board.viewport.zoomTo(embed);
-      await miro.board.remove(link);
-    } catch (error) {
-      console.error(error);
-    }
+// eslint-disable-next-line
+const insertRedditPreview = async (url: string): Promise<Preview> => {
+  return miro.board.createPreview({
+    url,
   });
 };
+
+const actions = [
+  {
+    verify: isInstagramLink,
+    action: insertInstagramEmbed,
+  },
+];
 
 export const handleLinkItemsCreate = async (event: ItemsCreateEvent): Promise<void> => {
   const { items = [] } = event;
@@ -41,5 +35,26 @@ export const handleLinkItemsCreate = async (event: ItemsCreateEvent): Promise<vo
     return;
   }
 
-  handleInstagramLinkItemsCreate(items);
+  items.forEach((e) => {
+    if (e.type !== 'text') {
+      return;
+    }
+
+    actions.some(async ({ verify, action }) => {
+      if (!verify(e.content)) {
+        return false;
+      }
+
+      try {
+        const widget = await action(e.content);
+
+        await miro.board.viewport.zoomTo(widget);
+        await miro.board.remove(e);
+      } catch (error) {
+        console.error(error);
+      }
+
+      return true;
+    });
+  });
 };

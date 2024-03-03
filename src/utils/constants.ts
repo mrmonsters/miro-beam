@@ -1,3 +1,4 @@
-export const DOMAINS = Object.freeze({
-  INSTAGRAM: 'instagram.com',
+export const REGEX_DOMAINS = Object.freeze({
+  INSTAGRAM: /(https?:\/\/(.+?\.)?instagram\.com(.*))/,
+  REDDIT: /(https?:\/\/(.+?\.)?reddit\.com(.*))/,
 });
