@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
     "target": "esnext",
-    "module": "esnext",
+    "module": "es2020",
     "lib": [
       "esnext",
       "dom"
@@ -24,12 +24,19 @@
     ],
     "allowJs": true,
     "incremental": true,
-    "isolatedModules": true
+    "isolatedModules": true,
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ]
   },
   "include": [
     "src",
-    "pages",
-    "*.ts"
+    "app",
+    "*.ts",
+    ".next/types/**/*.ts",
+    "next.config.js"
   ],
   "exclude": [
     "node_modules"
