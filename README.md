@@ -1,52 +1,39 @@
-## Miro Beam
-
-**&nbsp;ℹ&nbsp;Note**:
-
-- We recommend a Chromium-based web browser for local development with HTTP. \
-  Safari enforces HTTPS; therefore, it doesn't allow localhost through HTTP.
-- For more information, visit our [developer documentation](https://developers.miro.com).
+## Create a Miro app
 
 ### How to start locally
 
-- Run `yarn` to install dependencies.
-- Run `yarn start` to start developing. \
-  Your URL should be similar to this example:
- ```
- http://localhost:3000
- ```
-- Paste the URL under **App URL** in your
-  [app settings](https://developers.miro.com/docs/build-your-first-hello-world-app#step-3-configure-your-app-in-miro).
-- Open a board; you should see your app in the app toolbar or in the **Apps**
-  panel.
+1. [Sign in](https://miro.com/login/) to Miro, and then create a
+   [Developer team](https://developers.miro.com/docs/create-a-developer-team)
+   under your user account.
 
-### How to build the app
+2. [Create an app in Miro](https://developers.miro.com/docs/build-your-first-hello-world-app#step-2-create-your-app-in-miro).
 
-- Run `yarn build`. \
-  This generates a static output inside [`dist/`](./dist), which you can host on a static hosting
-  service.
+- Click the **Create new app** button.
+- On the **Create new app** modal, give your app a name, assign it to your
+  Developer team, and then click **Create**.
 
-### Folder structure
+3. Configure the app:
 
-<!-- The following tree structure is just an example -->
+- In your account profile, go to **Your apps**, and then select the app you just
+  created to access its configuration page.
+- On the app configuration page, go to **App Credentials**, and copy the app
+  **Client ID** and **Client secret** values: you'll need to enter these values
+  in step 4 below.
+- Go to **App URL** and enter the following URL: `http://localhost:3000`
+- Go to **Redirect URI for OAuth2.0**, and enter the following redirect URL:
+  `http://localhost:3000/api/redirect`
+- Click **Options**. \
+  From the drop-down menu select **Use this URI for SDK authorization**.
+- Lastly, go to **Permissions**, and select the following permissions:
+  - `board:read`
+  - `board:write`
 
-```
-.
-├── src
-│  ├── assets
-│  │  └── style.css
-│  ├── app.tsx      // The code for the app lives here
-│  └── index.ts    // The code for the app entry point lives here
-├── app.html       // The app itself. It's loaded on the board inside the 'appContainer'
-└── index.html     // The app entry point. This is what you specify in the 'App URL' box in the Miro app settings
-```
+4. Open the [`.env`](.env) file, and enter the app client ID and client secret
+   values that you saved at the beginning of step 3 above.
+5. Run `npm start` to start developing.
 
-### About the app
+When your server is up and running:
 
-This sample app provides you with boilerplate setup and configuration that you can further customize to build your own app.
-
-<!-- describe shortly the purpose of the sample app -->
-
-Built using [`create-miro-app`](https://www.npmjs.com/package/create-miro-app).
-
-This app uses [Vite](https://vitejs.dev/). \
-If you want to modify the `vite.config.js` configuration, see the [Vite documentation](https://vitejs.dev/guide/).
+- Go to [Miro.com](https://miro.com).
+- In your developer team, open a board.
+- To start your app, click the app icon in the app toolbar on the left.
