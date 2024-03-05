@@ -1,5 +1,6 @@
 import { ItemsCreateEvent } from '@mirohq/websdk-types';
-import { handleLinkItemsCreate } from './utils/miro';
+import { handleLinkItemsCreate } from '../utils/miro';
+import { useEffect } from 'react';
 
 const init = async (): Promise<void> => {
   window.miro.board.ui.on('items:create', (event: ItemsCreateEvent) => {
@@ -7,4 +8,8 @@ const init = async (): Promise<void> => {
   });
 };
 
-init();
+export const useHandleItemsCreate = () => {
+  useEffect(() => {
+    init();
+  }, []);
+};

@@ -6,32 +6,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="https://unpkg.com/mirotone@^5/dist/styles.css">
   <script src="https://miro.com/app/static/sdk/v2/miro.js"></script>
-  <title>Miro Beam</title>
 </head>
 
 <body>
-  <div id="root">
-    <div class="centered">
-      <div class="grid">
-        <div class="cs1 ce12">
-          <h1>Miro Beam</h1>
-          <p>
-            This is a simple tool to automatically create embedded content on Miro board from the pasted link.
-            Current supported content:
-          </p>
-          <ul>
-            <li>Instagram</li>
-          </ul>
-        </div>
-        <div class="cs1 ce12">
-          <p>Install the app from this <a
-              href="https://miro.com/app-install/?response_type=code&client_id=3458764579993367817&redirect_uri=%2Fapp-install%2Fconfirm%2F"
-              class="link link-primary" target="_blank" rel="noopener noreferrer">link</a> and start pasting away!</p>
-        </div>
-      </div>
-    </div>
-  </div>
-  <script type="module" src="/src/index.ts"></script>
+  <div id="root"></div>
+  <script>
+    if (global === undefined) {
+      var global = window;
+    }
+  </script>
+  <script type="module" src="/src/index.tsx"></script>
 </body>
 
 </html>
