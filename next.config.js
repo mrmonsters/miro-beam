@@ -4,6 +4,8 @@ const nextConfig = {
     ignoreDuringBuilds: true,
   },
   reactStrictMode: false,
+  output: 'export',
+  basePath: '/miro-beam',
 };
 
 module.exports = nextConfig;
