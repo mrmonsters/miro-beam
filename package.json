@@ -7,7 +7,6 @@
     "start": "next dev",
     "lint": "next lint",
     "postinstall": "husky",
-    "prepare": "husky",
     "predeploy": "yarn build",
     "deploy": "gh-pages -d out"
   },
@@ -31,6 +30,7 @@
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-json": "^3.1.0",
     "eslint-plugin-prettier": "^5.1.3",
+    "gh-pages": "^6.1.1",
     "husky": "^9.0.11",
     "lint-staged": "^15.2.2",
     "prettier": "^3.2.5",
