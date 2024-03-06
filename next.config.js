@@ -4,7 +4,7 @@ const nextConfig = {
     ignoreDuringBuilds: true,
   },
   reactStrictMode: false,
-  output: 'export',
+  // output: 'export',
   basePath: process.env.NODE_ENV === 'production' ? '/miro-beam' : '',
 };
 
