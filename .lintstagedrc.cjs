@@ -2,7 +2,7 @@ const path = require('path')
 
 const buildEslintCommand = (filenames) =>
   `next lint --ignore-path .eslintignore --fix --file ${filenames
-    .map((f) => path.relative(`${process.cwd()}/packages/web`, f))
+    .map((f) => path.relative(`${process.cwd()}`, f))
     .join(' --file ')}`
 
 module.exports = {

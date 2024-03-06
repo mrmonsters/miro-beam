@@ -1,10 +1,15 @@
-import type {NextRequest} from 'next/server';
-import {redirect} from 'next/navigation';
+import type { NextRequest } from 'next/server';
+import { notFound, redirect } from 'next/navigation';
 import initMiroAPI from '../../../utils/initMiroAPI';
 
 // handle redirect with code and exchange it for the access token
 export async function GET(request: NextRequest) {
-  const {miro, userId} = initMiroAPI();
+  // temp: to deploy to github pages
+  if (process.env.NODE_ENV === 'production') {
+    notFound();
+  }
+
+  const { miro, userId } = initMiroAPI();
 
   // Make sure the code is in query parameters
   const code = request.nextUrl.searchParams.get('code');
