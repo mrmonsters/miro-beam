@@ -6,10 +6,12 @@ const handler = (event: ItemsCreateEvent) => {
   handleLinkItemsCreate(event);
 };
 
-export const useHandleItemsCreate = () => {
+const useHandleItemsCreate = () => {
   useEffect(() => {
     window.miro.board.ui.on('items:create', handler);
 
     return () => miro.board.ui.off('items:create', handler);
   }, []);
 };
+
+export default useHandleItemsCreate;

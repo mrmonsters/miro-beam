@@ -15,3 +15,4 @@ services:
       - $HOME/.npm:/home/dev/.npm
       - $HOME/.yarn:/home/dev/.yarn
     working_dir: '/usr/app'
+    command: yarn start
