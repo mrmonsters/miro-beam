@@ -5,7 +5,7 @@ const nextConfig = {
   },
   reactStrictMode: false,
   output: 'export',
-  basePath: '/miro-beam',
+  basePath: process.env.NODE_ENV === 'production' ? '/miro-beam' : '',
 };
 
 module.exports = nextConfig;
