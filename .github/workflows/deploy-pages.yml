@@ -33,3 +33,5 @@ jobs:
           yarn deploy -- -u "github-actions-bot <support+actions@github.com>"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NEXT_PUBLIC_LINK_GITHUB: ${{ env.NEXT_PUBLIC_LINK_GITHUB }}
+          NEXT_PUBLIC_LINK_INSTALL: ${{ env.NEXT_PUBLIC_LINK_INSTALL }}
