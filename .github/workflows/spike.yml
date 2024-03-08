@@ -1,0 +1,21 @@
+name: Spike
+
+on:
+  push:
+    branches:
+      - 'spike/github-workflow'
+
+env:
+  NEXT_PUBLIC_LINK_GITHUB: ${{ vars.NEXT_PUBLIC_LINK_GITHUB }}
+  NEXT_PUBLIC_LINK_INSTALL: ${{ vars.NEXT_PUBLIC_LINK_INSTALL }}
+
+jobs:
+  test:
+    environment: production
+    if: github.ref == 'refs/heads/spike/github-workflow'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Test env vars
+        run: |
+          echo ${{ env.NEXT_PUBLIC_LINK_GITHUB }}
+          echo ${{ env.NEXT_PUBLIC_LINK_INSTALL }}
