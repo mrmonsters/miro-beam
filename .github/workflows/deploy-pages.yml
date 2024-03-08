@@ -3,6 +3,10 @@ name: Deploy to GitHub Pages
 on:
   workflow_dispatch:
 
+env:
+  NEXT_PUBLIC_LINK_GITHUB: ${{ vars.NEXT_PUBLIC_LINK_GITHUB }}
+  NEXT_PUBLIC_LINK_INSTALL: ${{ vars.NEXT_PUBLIC_LINK_INSTALL }}
+
 jobs:
   deploy:
     environment: production
@@ -33,5 +37,3 @@ jobs:
           yarn deploy -- -u "github-actions-bot <support+actions@github.com>"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          NEXT_PUBLIC_LINK_GITHUB: ${{ env.NEXT_PUBLIC_LINK_GITHUB }}
-          NEXT_PUBLIC_LINK_INSTALL: ${{ env.NEXT_PUBLIC_LINK_INSTALL }}
