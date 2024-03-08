@@ -1,4 +1,4 @@
-0:["_5zn-CY6Pk1tikGMbj2XK",[[["",{"children":["about",{"children":["__PAGE__",{}]}]},"$undefined","$undefined",true],"$L1",[null,"$L2"]]]]
+0:["kC-5RkSZCcdhh1geMhDvo",[[["",{"children":["about",{"children":["__PAGE__",{}]}]},"$undefined","$undefined",true],"$L1",[null,"$L2"]]]]
 3:I[3994,["185","static/chunks/app/layout-b308bc7f5beb2818.js"],""]
 4:I[6954,[],""]
 5:I[7264,[],""]
