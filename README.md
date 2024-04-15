@@ -18,6 +18,12 @@ A simple tool to automatically create embedded content on Miro board from the pa
      export DOCKER_USER="$(id -u):$(id -g)"
      ```
 
+1. Build a custom image using the same user ID and group ID:
+
+   - ```bash
+     ./scripts/build.sh
+     ```
+
 1. Install the project dependencies:
 
    - ```bash
